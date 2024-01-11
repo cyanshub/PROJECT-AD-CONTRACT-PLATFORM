@@ -8,3 +8,61 @@
 }
 
 // ==== style start ====
+// 導覽列 nav 樣式設計
+nav {
+  // 概略外觀
+  background-color: $main-blue;
+  width: 60px;
+
+  // 容器排版
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  
+  // positon 定位相關
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+
+  // 細部外觀
+  padding: 1rem 0;
+
+  .menu {
+    // 容器排版
+    display: flex;
+    flex-direction: column;
+    
+    // 細部外觀
+    a {
+      display: block;
+      margin-bottom: 1rem;
+      color: $white;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  .user-center {
+    // 細部外觀
+    a {
+      display: block;
+      color: $white;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+
+// 主要區塊 main 樣式設計
+
+
+// 卡片清單 card-list 樣式設計
+
+
+// 步驟引導 stepper 樣式設計
+
+
+// 表單 form 樣式設計
+
