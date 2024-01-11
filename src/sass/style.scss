@@ -1,0 +1,10 @@
+// 載入低階模組彙整器, 使用 as * 免除輸入引用低階模組的名稱
+@use "./index" as *;
+
+
+// shadow
+%standard-boxshadow {
+  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
+}
+
+// ==== style start ====

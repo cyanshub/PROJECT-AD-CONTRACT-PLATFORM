@@ -1,0 +1,178 @@
+// 使用@each 產出css width, height, margin, padding 等設定
+$size: 1;
+$sizes: (
+  25: $size * 25%,
+  50: $size * 50%,
+  75: $size * 75%,
+  100: $size * 100%
+);
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer * 0.75,
+  4: $spacer * 1.0,
+  5: $spacer * 1.25,
+  6: $spacer * 1.5,
+  7: $spacer * 1.75,
+  8: $spacer * 2.0
+);
+
+
+// #{}代表字串型別
+// width, height
+@each $abbrev, $prop in (w:width, h:height){
+  @each $num, $val in ($sizes){
+    .#{$abbrev}-#{$num} {
+      #{$prop}: $val;
+    }
+  }
+}
+
+// margin, padding
+@each $abbrev, $prop in (m:margin, p:padding) {
+  @each $num, $val in ($spacers) {
+    // 全方向
+    .#{$abbrev}-#{$num} {
+      #{$prop}: $val;
+    }
+
+    // 頂部
+    .#{$abbrev}t-#{$num} {
+      #{$prop}-top: $val;
+    }
+
+    // 底部
+    .#{$abbrev}b-#{$num} {
+      #{$prop}-bottom: $val;
+    }
+
+    // 右側
+    .#{$abbrev}r-#{$num} {
+      #{$prop}-right: $val;
+    }
+
+    // 左側
+    .#{$abbrev}l-#{$num} {
+      #{$prop}-left: $val;
+    }
+
+    // 上下
+    .#{$abbrev}y-#{$num} {
+      #{$prop}-top: $val;
+      #{$prop}-bottom: $val;
+    }
+
+    // 左右
+    .#{$abbrev}x-#{$num} {
+      #{$prop}-right: $val;
+      #{$prop}-left: $val;
+    }
+  }
+}
+
+
+
+// html
+html {
+  scroll-behavior: smooth; // 網頁流暢滑動
+}
+
+
+// cursors
+.cursor-pointer {
+  cursor: pointer;
+}
+
+
+
+// display
+.d-none {
+  display: none;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+
+//  display alignments
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-content-start {
+  justify-content: flex-start;
+}
+
+.justify-content-end {
+  justify-content: flex-end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.align-content-start {
+  align-content: flex-start;
+}
+
+.align-content-end {
+  align-content: flex-end;
+}
+
+.align-content-center {
+  align-content: center;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+
+// text-alignment
+.text-center {
+  text-align: center;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}
