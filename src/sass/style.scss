@@ -2,6 +2,9 @@
 @use "./index" as *;
 
 
+// 宣告變數
+$nav-width: 60px;
+
 // shadow
 %standard-boxshadow {
   box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
@@ -12,7 +15,7 @@
 nav {
   // 概略外觀
   background-color: $main-blue;
-  width: 60px;
+  width: $nav-width;
 
   // 容器排版
   display: flex;
@@ -56,6 +59,13 @@ nav {
 
 
 // 主要區塊 main 樣式設計
+#main-content {
+  // 概略外觀
+  // 容器排版
+  // position 相關
+  // 細部外觀
+  margin-left: $nav-width;
+}
 
 
 // 卡片清單 card-list 樣式設計
