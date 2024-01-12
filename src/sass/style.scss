@@ -1,78 +1,166 @@
 // 載入低階模組彙整器, 使用 as * 免除輸入引用低階模組的名稱
 @use "./index" as *;
 
-
-// 宣告變數
-$nav-width: 60px;
-
-// shadow
-%standard-boxshadow {
-  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
-}
-
 // ==== style start ====
-// 導覽列 nav 樣式設計
-nav {
+// 整個容器 main-app 樣式設計
+#main-app {
   // 概略外觀
-  background-color: $main-blue;
-  width: $nav-width;
-
-  // 容器排版
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  
-  // positon 定位相關
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  z-index: 100;
+  height: 100%;
 
   // 細部外觀
-  padding: 1rem 0;
+  // 導覽列 nav 樣式設計
+  nav {
+    // 概略外觀
+    background-color: $main-blue;
+    width: $nav-width;
 
-  .menu {
     // 容器排版
     display: flex;
     flex-direction: column;
-    
+    justify-content: space-between;
+    align-items: center;
+
+    // positon 定位相關
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+
     // 細部外觀
-    a {
-      display: block;
-      margin-bottom: 1rem;
-      color: $white;
-      font-size: 1.5rem;
-      text-align: center;
+    padding: 1rem 0;
+
+    // 內層
+    .menu {
+      // 容器排版
+      display: flex;
+      flex-direction: column;
+
+      // 細部外觀
+      // 內層
+      a {
+        display: block;
+        margin-bottom: 1rem;
+        color: $white;
+        font-size: 1.5rem;
+        text-align: center;
+      }
+    }
+
+    .user-center {
+
+      // 細部外觀
+      // 內層
+      a {
+        display: block;
+        color: $white;
+        font-size: 1.5rem;
+      }
     }
   }
 
-  .user-center {
+  // 主要區塊 main 樣式設計
+  #main-content {
+    // 概略外觀
+    height: 100%;
+
+    // 容器排版
+    display: flex;
+
+    // position 相關
     // 細部外觀
-    a {
-      display: block;
-      color: $white;
-      font-size: 1.5rem;
+    margin-left: $nav-width;
+
+    // 內層
+    // 卡片清單 card-list 樣式設計
+    .card-list-panel {
+      // 概略外觀
+      background-color: $white;
+      height: 100%; // 設定卷軸需要指定高度100%, 外層容器的高度也要記得設定
+
+      // 容器排版
+      // position 相關
+      z-index: 20;
+
+      // 細部外觀
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: $card-list-panel-width;
+      overflow-y: scroll; //設定卷軸
+      padding-left: $scrollbar-width;
+
+      &::-webkit-scrollbar {
+        width: $scrollbar-width;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: $scrollbar-width*0.5;
+        background-color: $scrollbar-background-color;
+      }
+
+      // 內層
+      // 網紅圖卡
+      .card {
+        // 概略外觀   
+        width: $card-width;
+
+        // 容器排版
+        // position 相關
+        // 細部外觀
+        margin-top: 1rem;
+        padding: 0.5rem;
+        border: $card-border;
+        border-radius: $card-border-radius;
+        box-shadow: $card-box-shadow;
+        font-size: 0.875rem;
+        opacity: 0.5;
+        cursor: pointer;
+
+        // 網紅圖卡互動式體驗
+        &:hover,
+        &.active {
+          opacity: 1;
+        }
+
+        &.active {
+          border-color: $card-border-color;
+        }
+
+        // 內層
+        .flex-row {
+          // 容器排版
+          display: flex;
+          align-items: center;
+
+          // 細部排版
+          // 內層
+          i.fa-youtube {
+            @extend %icon;
+            color: $youtube-color;
+          }
+
+          i.fa-facebook-square {
+            @extend %icon;
+            color: $facebook-color;
+          }
+
+          i.fa-instagram {
+            @extend %icon;
+            color: $instagram-color;
+          }
+        }
+      }
+    }
+
+    // 右半區塊 .right-content 樣式設計
+    .right-content-panel {
+      // 細部外觀
+      flex-grow: 1;
+
+      // 內層
+      // 步驟引導 stepper 樣式設計
+
+
+      // 表單 form 樣式設計
     }
   }
 }
-
-
-// 主要區塊 main 樣式設計
-#main-content {
-  // 概略外觀
-  // 容器排版
-  // position 相關
-  // 細部外觀
-  margin-left: $nav-width;
-}
-
-
-// 卡片清單 card-list 樣式設計
-
-
-// 步驟引導 stepper 樣式設計
-
-
-// 表單 form 樣式設計
-

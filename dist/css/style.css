@@ -762,7 +762,17 @@ html {
   text-align: left;
 }
 
-nav {
+#main-app #main-content .card-list-panel .card .flex-row i.fa-youtube, #main-app #main-content .card-list-panel .card .flex-row i.fa-facebook-square, #main-app #main-content .card-list-panel .card .flex-row i.fa-instagram {
+  width: 20px;
+  font-size: 1.125rem;
+  text-align: center;
+  margin-right: 5px;
+}
+
+#main-app {
+  height: 100%;
+}
+#main-app nav {
   background-color: #001935;
   width: 60px;
   display: flex;
@@ -775,23 +785,76 @@ nav {
   z-index: 100;
   padding: 1rem 0;
 }
-nav .menu {
+#main-app nav .menu {
   display: flex;
   flex-direction: column;
 }
-nav .menu a {
+#main-app nav .menu a {
   display: block;
   margin-bottom: 1rem;
   color: #fff;
   font-size: 1.5rem;
   text-align: center;
 }
-nav .user-center a {
+#main-app nav .user-center a {
   display: block;
   color: #fff;
   font-size: 1.5rem;
 }
-
-#main-content {
+#main-app #main-content {
+  height: 100%;
+  display: flex;
   margin-left: 60px;
-}/*# sourceMappingURL=style.css.map */
+}
+#main-app #main-content .card-list-panel {
+  background-color: #fff;
+  height: 100%;
+  z-index: 20;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 250px;
+  overflow-y: scroll;
+  padding-left: 10px;
+}
+#main-app #main-content .card-list-panel::-webkit-scrollbar {
+  width: 10px;
+}
+#main-app #main-content .card-list-panel::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#main-app #main-content .card-list-panel .card {
+  width: 200px;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.09);
+  font-size: 0.875rem;
+  opacity: 0.5;
+  cursor: pointer;
+}
+#main-app #main-content .card-list-panel .card:hover, #main-app #main-content .card-list-panel .card.active {
+  opacity: 1;
+}
+#main-app #main-content .card-list-panel .card.active {
+  border-color: #a7aaaf;
+}
+#main-app #main-content .card-list-panel .card .flex-row {
+  display: flex;
+  align-items: center;
+}
+#main-app #main-content .card-list-panel .card .flex-row i.fa-youtube {
+  color: #f11502;
+}
+#main-app #main-content .card-list-panel .card .flex-row i.fa-facebook-square {
+  color: #4177f2;
+}
+#main-app #main-content .card-list-panel .card .flex-row i.fa-instagram {
+  color: #da2e6a;
+}
+#main-app #main-content .right-content-panel {
+  flex-grow: 1;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,5 +1,15 @@
 // 載入封包函式
 import {setBtnDisabled} from "./set_btn_disabled.js"
+
+// 進行 DOM 操作選取物件
+const form = document.getElementById('a-form')
+const formParts = form.querySelectorAll('.part')
+const stepControl = document.getElementById('step-control')
+const steps = stepControl.querySelectorAll('.step')
+
+// 定義變數
+let step = 0
+
 export function handleBtnControlClicked(e) {
   e.preventDefault()
   const nowStep = steps[step]

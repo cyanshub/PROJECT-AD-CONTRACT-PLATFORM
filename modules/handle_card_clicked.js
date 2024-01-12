@@ -1,3 +1,9 @@
+// 進行 DOM 操作選取物件
+const cardList = document.getElementById('card-list')
+
+// 定義變數
+let activeCard = 0
+
 export function handleCardClicked({ target }) {
   const cards = cardList.querySelectorAll('.card')
   const node = target.closest('.card')
