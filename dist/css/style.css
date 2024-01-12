@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* reset css */
 body {
   margin: 0;
@@ -853,8 +854,66 @@ html {
 #main-app #main-content .card-list-panel .card .flex-row i.fa-instagram {
   color: #da2e6a;
 }
-#main-app #main-content .right-content-panel {
+#main-app #main-content .right-content {
   flex-grow: 1;
+}
+#main-app #main-content .right-content .stepper-panel {
+  height: 120px;
+}
+#main-app #main-content .right-content .stepper-panel .stepper-container {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  padding-top: 40px;
+}
+#main-app #main-content .right-content .stepper-panel .stepper-container .step {
+  position: relative;
+  flex-grow: 1;
+}
+#main-app #main-content .right-content .stepper-panel .stepper-container .step:nth-child(1) .circle-container::after {
+  content: "1";
+}
+#main-app #main-content .right-content .stepper-panel .stepper-container .step:nth-child(2) .circle-container::after {
+  content: "2";
+}
+#main-app #main-content .right-content .stepper-panel .stepper-container .step:nth-child(3) .circle-container::after {
+  content: "3";
+}
+#main-app #main-content .right-content .stepper-panel .stepper-container .step.checked .circle-container, #main-app #main-content .right-content .stepper-panel .stepper-container .step.active .circle-container {
+  background-color: #02b8ff;
+  color: #18253d;
+}
+#main-app #main-content .right-content .stepper-panel .stepper-container .step.checked .label-container, #main-app #main-content .right-content .stepper-panel .stepper-container .step.active .label-container {
+  color: #18253d;
+}
+#main-app #main-content .right-content .stepper-panel .stepper-container .step.checked .circle-container::after {
+  content: "✔";
+}
+#main-app #main-content .right-content .stepper-panel .stepper-container .step .circle-container {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: #a7aaaf;
+  border-radius: 50%;
+  color: #4a4a4a;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 2.5rem;
+  font-size: 1.5rem;
+}
+#main-app #main-content .right-content .stepper-panel .stepper-container .step .connect-line {
+  display: block;
+  height: 1px;
+  background-color: #a7aaaf;
+  position: absolute;
+  top: 1.25rem;
+  right: calc(50% + 2.5rem);
+  left: calc(-50% + 2.5rem);
+}
+#main-app #main-content .right-content .stepper-panel .stepper-container .step .label-container {
+  text-align: center;
+  margin-top: 0.6rem;
+  color: #a7aaaf;
 }
 
 /*# sourceMappingURL=style.css.map */

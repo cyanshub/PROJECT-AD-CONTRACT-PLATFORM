@@ -15,7 +15,7 @@ $icon-width: 20px;
 $icon-font-size: 1.125rem;
 
 
-@use "./colors";
+
 %icon {
 // 概略外觀
   width: $icon-width;
@@ -30,6 +30,26 @@ $icon-font-size: 1.125rem;
 
 // 卡片捲軸 scrollbar
 $scrollbar-width: 10px;
+
+
+// step 
+$circle-container-width: 2.5rem;
+
+
+// i.e. .step .circle-container
+@mixin getStepNums($num){
+  @for $i from 1 through $num{
+    &:nth-child(#{$i}) {
+      // 內層
+      .circle-container::after {
+        content: "#{$i}"
+      }
+    }
+  }
+}
+
+
+
 
 
 

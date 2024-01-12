@@ -152,15 +152,107 @@
     }
 
     // 右半區塊 .right-content 樣式設計
-    .right-content-panel {
+    .right-content {
       // 細部外觀
       flex-grow: 1;
 
       // 內層
       // 步驟引導 stepper 樣式設計
+      .stepper-panel {
+        // 概略外觀
+        height: 120px;
+
+        // 內層
+        .stepper-container{
+          // 概略外觀
+          width:80%;
+
+          // 容器排版
+          display: flex;
+          flex-direction: row;
+          
+          // 細部外觀
+          margin: 0 auto;
+          padding-top: 40px;
+
+          // 內層
+          .step {         
+            // position 定位
+            position: relative;
+            
+            // 細部外觀
+            flex-grow: 1; // 平均佔滿剩餘空間
+        
+            @include getStepNums(3);
+            
+            &.checked, &.active {
+              // 內層
+              .circle-container {
+                // 概略外觀
+                background-color: $freedom-blue;
+                // 細部外觀
+                color: $body-color;
+              }
+              .label-container {
+                color: $body-color;
+              }
+            }
+
+            &.checked {
+              // 內層
+              .circle-container::after{
+                content: "\2714";
+              }
+            }
+
+            // 內層
+            .circle-container {
+              // 概略外觀
+              width: $circle-container-width;
+              height: $circle-container-width;
+              background-color: $light-gray;
+
+              // 細部外觀
+              border-radius: 50%;
+              color: $dark-gray;
+              margin: 0 auto;
+              text-align: center;
+              line-height: $circle-container-width;
+              font-size: $circle-container-width*0.6;
+            }
+
+            .connect-line {
+              // 概略外觀
+              display: block;
+              height: 1px;
+              background-color: $light-gray;
+
+              // position 定位
+              position: absolute;
+              top: $circle-container-width/2;
+              right: calc(50% + $circle-container-width);
+              left: calc(-50% + $circle-container-width);
+            }
+
+            .label-container {
+              text-align: center;
+              margin-top: 0.6rem;
+              color: $light-gray;
+            }
+          }
+        }
+      }
 
 
       // 表單 form 樣式設計
+      .form-panel {
+        // 概略外觀
+        // 容器排版
+        // position
+        // 細部外觀
+        // 內層
+        
+      }
     }
   }
 }
