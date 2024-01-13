@@ -1,35 +1,17 @@
+@use "./colors";
+@use "./forms";
+
+
 // 宣告變數
-// 導覽列
+// nav 導覽列
 $nav-width: 60px;
 
-// 卡片
+// card 卡片
 $card-list-panel-width: 250px;
 $card-width: $card-list-panel-width - 50px;
 $card-border: 1px solid #e0e0e0;
 $card-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.09);
 $card-border-radius: 5px;
-
-
-// icon圖示
-$icon-width: 20px;
-$icon-font-size: 1.125rem;
-
-
-
-%icon {
-// 概略外觀
-  width: $icon-width;
-  // 容器排版
-  // position
-  // 細部外觀
-  font-size: $icon-font-size;
-  text-align: center;
-  margin-right: 5px;
-}
-
-
-// 卡片捲軸 scrollbar
-$scrollbar-width: 10px;
 
 
 // step 
@@ -49,12 +31,9 @@ $circle-container-width: 2.5rem;
 }
 
 
+// form
+$terms-panel-max-height: 250px;
+$terms-panel-border: forms.$form-border;
 
 
-
-
-
-%standard-boxshadow {
-  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
-}
 

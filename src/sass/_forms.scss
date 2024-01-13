@@ -1,0 +1,246 @@
+// 引用低階模組: 工具
+@use "./tools";
+
+
+// form: 通用樣式設計
+// 宣告樣式變數
+$form-white: #fff;
+$form-light-gray: #a7aaaf;
+$form-dark-gray: #4a4a4a;
+$form-light-blue: #3c88fd;
+$form-invalid: #747474;
+$form-border: 1px solid $form-light-gray;
+
+
+// 宣告樣式類別
+%input-style {
+  border: $form-border;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  padding: 0.5rem;
+
+  &:hover,
+  &:focus {
+    border-color: $form-dark-gray;
+  }
+}
+
+
+%select-style {
+// 概略外觀
+  width: 100%;
+  background-color: transparent;
+
+  
+  // 細部設計
+  @extend %input-style;
+  cursor: pointer;
+  -webkit-appearance: none; // 取消 select 預設樣式, 若取消時需要自己加回三角形箭頭
+
+  &:invalid {
+    // 搭配 required 屬性, select 無效時的樣式, option:disabled
+    color: $form-invalid;
+  }
+}
+
+
+
+form {
+  // 內層
+  .form-row {
+    // 容器排版
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+
+    // 細部外觀
+    margin-bottom: 1.5rem;
+
+
+    // 內層
+    >label {
+      // 指定容器底下直接接觸的 label 樣式
+      // 概略外觀
+      display: block;
+
+      // 細部設計
+      margin-right: 0.5rem;
+      font-weight: 500;
+    }
+
+    
+    input {
+      // 設定 input 通用樣式
+      @extend %input-style;
+
+      &[type="checkbox"], &[type="radio"] {
+        // 細部設計
+        cursor: pointer;
+        ~label { // 同層選擇器, 後面同一層的元素
+          display: inline-block;
+          font-weight: normal;
+          margin: 0;
+        }
+      }
+
+      &[type="checkbox"]{
+        // position
+        position: relative;
+        
+        // 細部設計
+        -webkit-appearance: none; // 取消瀏覽器預設樣式
+        border-radius: 3px;
+
+        &:checked {
+          // 概略外觀
+          background-color: $form-light-blue;
+
+          // 細部設計
+
+          &::after {
+            // 概略外觀
+            position: absolute;
+            top: 0;
+            left: 4px;
+            
+            // 細部設計
+            content: "\2714";
+            font-size: 0.6rem;
+            color: $form-white;
+          }
+        }
+
+        &:focus {
+          border-color: $form-light-gray;
+        }
+
+        &:hover {
+          border-color: $form-dark-gray;
+        }
+      }
+
+      &[type="radio"] {
+        -webkit-appearance: none;
+        border-radius: 50%;
+
+        &:checked {
+          box-shadow: inset 0 0 0 5px $form-light-blue;
+        }
+
+        ~label { // 同層選擇器, 後面同一層的元素
+          margin-right: 1.5rem;
+        }
+      }
+
+      &[type="date"] {
+        cursor: pointer;
+
+        &:invalid {
+          color: $form-invalid;
+        }
+      }
+
+      &[type="number"] {
+        width: 6.4rem;
+        text-align: center;
+      }
+    }
+
+
+    select {
+      // 設定 select 通用樣式: 沒有 div.select-wrapper 的情況
+      // 概略外觀
+      width: 23%;
+
+      // 細部設計
+      @extend %select-style;
+      -webkit-appearance: auto; // 取消 select 預設樣式, 若取消時需要自己加回三角形箭頭
+    }
+
+
+    .select-wrapper {
+      // 設定 select 通用樣式: 由於select本身不能使用偽纇, 所以用div.select-wrapper補足
+      // 概略外觀
+      width: 23%;
+      min-width: 150px;
+
+      // 容器排版
+      // position
+      position: relative;
+      z-index: 0;
+
+      // 細部外觀
+      &::after {  
+        // position
+        position: absolute;
+        top:50%;
+        right: 0.5rem;
+        transform: translateY(-50%);
+        z-index: -1;
+
+        // 細部外觀
+        // content: "\25BE"; // 預設箭頭
+        content:""; // \自製箭頭
+        border-style: solid;
+        border-width: 6px 5px 0 5px;
+        border-color: $form-light-gray transparent transparent transparent; // 三角形 
+      }
+
+      // 內層
+      select {
+        @extend %select-style;
+      }
+    }
+
+    
+    textarea {
+      // 多行文字輸入選項
+      // 概略外觀
+      width: 50%;
+      max-width: 100%;
+
+      // 細部設計
+      resize: none;
+      @extend %input-style;
+      @include tools.getScrollbar; // 設定卷軸樣式
+    }
+  }
+
+
+  .btn {
+    // 按鈕樣式
+    // 概略外觀
+    // border: 1px solid red;
+    height: 2rem;
+    
+    // 細部設計
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: 0 1rem;
+    box-shadow: 1px 1px 5px #a6a6a6;
+    
+
+    &[disabled] {
+      // 按鈕失效屬性樣式
+      opacity: 0.5;
+    }
+
+
+    &.btn-primary {
+      // 按鈕下一步樣式
+      color: $form-white;
+      background-color: $form-light-blue;
+    }
+
+
+    &.btn-outline {
+      // 按鈕上一部樣式
+      color: $form-dark-gray;
+
+      &:hover {
+        box-shadow: 1px 1px 5px $form-dark-gray;
+      }
+    }
+  }
+}

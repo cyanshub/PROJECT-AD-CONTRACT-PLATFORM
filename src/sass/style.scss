@@ -35,7 +35,6 @@
       display: flex;
       flex-direction: column;
 
-      // 細部外觀
       // 內層
       a {
         display: block;
@@ -48,7 +47,6 @@
 
     .user-center {
 
-      // 細部外觀
       // 內層
       a {
         display: block;
@@ -66,7 +64,6 @@
     // 容器排版
     display: flex;
 
-    // position 相關
     // 細部外觀
     margin-left: $nav-width;
 
@@ -85,17 +82,8 @@
       flex-grow: 0;
       flex-shrink: 0;
       flex-basis: $card-list-panel-width;
-      overflow-y: scroll; //設定卷軸
       padding-left: $scrollbar-width;
-
-      &::-webkit-scrollbar {
-        width: $scrollbar-width;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        border-radius: $scrollbar-width*0.5;
-        background-color: $scrollbar-background-color;
-      }
+      @include getScrollbar; //設定卷軸樣式
 
       // 內層
       // 網紅圖卡
@@ -103,8 +91,6 @@
         // 概略外觀   
         width: $card-width;
 
-        // 容器排版
-        // position 相關
         // 細部外觀
         margin-top: 1rem;
         padding: 0.5rem;
@@ -131,10 +117,12 @@
           display: flex;
           align-items: center;
 
-          // 細部排版
+          // 細部外觀
+          margin-bottom: 0.1rem;
+
           // 內層
           i.fa-youtube {
-            @extend %icon;
+            @extend %icon; // 繼承與複寫圖像類別
             color: $youtube-color;
           }
 
@@ -153,6 +141,11 @@
 
     // 右半區塊 .right-content 樣式設計
     .right-content {
+
+      // 容器排版
+      display: flex;
+      flex-direction: column;
+
       // 細部外觀
       flex-grow: 1;
 
@@ -161,31 +154,34 @@
       .stepper-panel {
         // 概略外觀
         height: 120px;
+        margin-bottom: 40px;
 
         // 內層
-        .stepper-container{
+        .stepper-container {
           // 概略外觀
-          width:80%;
+          width: 80%;
 
           // 容器排版
           display: flex;
           flex-direction: row;
-          
+
           // 細部外觀
           margin: 0 auto;
           padding-top: 40px;
 
           // 內層
-          .step {         
+          .step {
             // position 定位
             position: relative;
-            
+
             // 細部外觀
             flex-grow: 1; // 平均佔滿剩餘空間
-        
-            @include getStepNums(3);
-            
-            &.checked, &.active {
+
+            @include getStepNums(3); // conten步驟數字
+
+            &.checked,
+            &.active {
+
               // 內層
               .circle-container {
                 // 概略外觀
@@ -193,14 +189,16 @@
                 // 細部外觀
                 color: $body-color;
               }
+
               .label-container {
                 color: $body-color;
               }
             }
 
             &.checked {
+
               // 內層
-              .circle-container::after{
+              .circle-container::after {
                 content: "\2714";
               }
             }
@@ -229,7 +227,7 @@
 
               // position 定位
               position: absolute;
-              top: $circle-container-width/2;
+              top: $circle-container-width * 0.5;
               right: calc(50% + $circle-container-width);
               left: calc(-50% + $circle-container-width);
             }
@@ -247,11 +245,65 @@
       // 表單 form 樣式設計
       .form-panel {
         // 概略外觀
-        // 容器排版
-        // position
+        background-color: $white;
+
         // 細部外觀
+        padding: 3rem 0;
+        @extend %standard-boxshadow;
+        flex-grow: 1; // 占滿 flex 容器的剩餘空間
+        @include getScrollbar; //設定卷軸樣式
+
         // 內層
-        
+        .form-container {
+          // 概略外觀
+          width: 80%;
+          height: 100%; // 佔滿容器高100% (撐開版面)
+
+          // 細部外觀
+          margin: 0 auto;
+
+          // 內層
+          form {
+            // 概略外觀
+            height: 100%; // 佔滿容器高100% (撐開版面)
+
+            // 容器排版
+            display: flex;
+            flex-direction: column;
+
+            // 內層
+            .form-content {
+              // 表單內容
+              // 細部設計
+              flex-grow: 1;
+
+              // 內層
+              .terms-panel {
+                // 概略外觀
+                max-height: $terms-panel-max-height;
+
+                // 細部外觀
+                padding: 1rem;
+                margin-bottom: 1rem;
+                border: $terms-panel-border;
+                border-radius: 5px;
+                @include getScrollbar;
+              }
+            }
+
+            .control-panel {
+              // 按鈕區塊
+              // 容器排版
+              display: flex;
+              justify-content: center;
+
+              // 內層
+              .btn {
+                margin-left: 0.75rem;
+              }
+            }
+          }
+        }
       }
     }
   }

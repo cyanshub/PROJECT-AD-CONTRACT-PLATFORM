@@ -1,0 +1,41 @@
+// 收藏常用的類別及工具類別
+// ============== i元素圖式設計icon ==============
+// 宣告變數
+$icon-width: 1.25rem;
+$icon-font-size: 1.125rem;
+
+%icon {
+  // 概略外觀
+  width: $icon-width;
+
+  // 細部外觀
+  font-size: $icon-font-size;
+  text-align: center;
+  margin-right: 5px;
+}
+
+
+// ============== 捲軸設定 scrollbar ==============
+// 宣告變數
+$scrollbar-width: 10px;
+$scrollbar-background-color: rgba(0, 0, 0, 0.1);
+
+//設定卷軸樣式
+@mixin getScrollbar() {
+  overflow-y: scroll; //設定卷軸
+
+  &::-webkit-scrollbar {
+    width: $scrollbar-width;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: $scrollbar-width*0.5;
+    background-color: $scrollbar-background-color;
+  }
+}
+
+// ============== 陰影樣式 ==============
+// 陰影樣式
+%standard-boxshadow {
+  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
+}
