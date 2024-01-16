@@ -12,24 +12,11 @@ $card-width: $card-list-panel-width - 50px;
 $card-border: 1px solid #e0e0e0;
 $card-box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.09);
 $card-border-radius: 5px;
-
+$card-line: colors.$light-gray;
+$card-list-panel-bg: colors.$white;
 
 // step 
 $circle-container-width: 2.5rem;
-
-
-// i.e. .step .circle-container
-@mixin getStepNums($num){
-  @for $i from 1 through $num{
-    &:nth-child(#{$i}) {
-      // 內層
-      .circle-container::after {
-        content: "#{$i}"
-      }
-    }
-  }
-}
-
 
 // form
 $terms-panel-max-height: 250px;

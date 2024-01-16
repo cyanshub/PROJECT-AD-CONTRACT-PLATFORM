@@ -84,7 +84,6 @@ td {
   text-align: initial;
 }
 
-/* basic setting */
 html {
   font-size: 16px;
   width: 100%;
@@ -763,35 +762,41 @@ html {
   text-align: left;
 }
 
-#main-app #main-content .card-list-panel .card .flex-row i.fa-youtube, #main-app #main-content .card-list-panel .card .flex-row i.fa-facebook-square, #main-app #main-content .card-list-panel .card .flex-row i.fa-instagram {
-  width: 1.25rem;
-  font-size: 1.125rem;
-  text-align: center;
-  margin-right: 5px;
-}
-
-#main-app #main-content .right-content .form-panel {
-  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
-}
-
-form .form-row textarea, form .form-row input, form .form-row .select-wrapper select, form .form-row select {
+form .form-row textarea, form .form-row input, form .form-row .datalist-wrapper input[list],
+form .form-row .datalist-wrapper datalist, form .form-row .select-wrapper select, form .form-row select {
   border: 1px solid #a7aaaf;
   border-radius: 0.3125rem;
   font-size: 1rem;
   padding: 0.5rem;
 }
-form .form-row textarea:hover, form .form-row input:hover, form .form-row select:hover, form .form-row textarea:focus, form .form-row input:focus, form .form-row select:focus {
+form .form-row textarea:hover, form .form-row input:hover, form .form-row .datalist-wrapper input[list]:hover,
+form .form-row .datalist-wrapper datalist:hover, form .form-row select:hover, form .form-row textarea:focus, form .form-row input:focus, form .form-row .datalist-wrapper input[list]:focus,
+form .form-row .datalist-wrapper datalist:focus, form .form-row select:focus {
   border-color: #4a4a4a;
 }
 
-form .form-row .select-wrapper select, form .form-row select {
+form .form-row .datalist-wrapper input[list],
+form .form-row .datalist-wrapper datalist, form .form-row .select-wrapper select, form .form-row select {
   width: 100%;
   background-color: transparent;
   cursor: pointer;
   -webkit-appearance: none;
 }
-form .form-row select:invalid {
+form .form-row .datalist-wrapper input[list]:invalid,
+form .form-row .datalist-wrapper datalist:invalid, form .form-row select:invalid {
   color: #747474;
+}
+
+form .form-row .datalist-wrapper::after, form .form-row .select-wrapper::after {
+  position: absolute;
+  top: 50%;
+  right: 0.5rem;
+  transform: translateY(-50%);
+  z-index: -1;
+  content: "";
+  border-style: solid;
+  border-width: 6px 5px 0 5px;
+  border-color: #a7aaaf transparent transparent transparent;
 }
 
 form .form-row {
@@ -835,6 +840,9 @@ form .form-row input[type=checkbox]:focus {
 form .form-row input[type=checkbox]:hover {
   border-color: #4a4a4a;
 }
+form .form-row input[type=checkbox] ~ label {
+  margin-right: 1.5rem;
+}
 form .form-row input[type=radio] {
   -webkit-appearance: none;
   border-radius: 50%;
@@ -857,7 +865,6 @@ form .form-row input[type=number] {
 }
 form .form-row select {
   width: 23%;
-  -webkit-appearance: auto;
 }
 form .form-row .select-wrapper {
   width: 23%;
@@ -865,16 +872,19 @@ form .form-row .select-wrapper {
   position: relative;
   z-index: 0;
 }
-form .form-row .select-wrapper::after {
-  position: absolute;
-  top: 50%;
-  right: 0.5rem;
-  transform: translateY(-50%);
-  z-index: -1;
-  content: "";
-  border-style: solid;
-  border-width: 6px 5px 0 5px;
-  border-color: #a7aaaf transparent transparent transparent;
+form .form-row .datalist-wrapper {
+  width: 23%;
+  min-width: 150px;
+  position: relative;
+  z-index: 0;
+}
+form .form-row .datalist-wrapper input[list],
+form .form-row .datalist-wrapper datalist {
+  cursor: text;
+}
+form .form-row .datalist-wrapper input[list]::-webkit-calendar-picker-indicator,
+form .form-row .datalist-wrapper datalist::-webkit-calendar-picker-indicator {
+  display: none !important;
 }
 form .form-row textarea {
   width: 50%;
@@ -908,6 +918,17 @@ form .btn.btn-outline {
 }
 form .btn.btn-outline:hover {
   box-shadow: 1px 1px 5px #4a4a4a;
+}
+
+#main-app #main-content .card-list-panel .card .flex-row i.fa-youtube, #main-app #main-content .card-list-panel .card .flex-row i.fa-facebook-square, #main-app #main-content .card-list-panel .card .flex-row i.fa-instagram {
+  width: 1.25rem;
+  font-size: 1.125rem;
+  text-align: center;
+  margin-right: 5px;
+}
+
+#main-app #main-content .right-content .form-panel {
+  box-shadow: 3px 0 13px 0 rgba(100, 112, 134, 0.1);
 }
 
 #main-app {
@@ -950,6 +971,9 @@ form .btn.btn-outline:hover {
 #main-app #main-content .card-list-panel {
   background-color: #fff;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   z-index: 20;
   flex-grow: 0;
   flex-shrink: 0;

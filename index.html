@@ -101,11 +101,32 @@
                       </select>
                     </div>
                   </div>
+                  <!-- 測試程式碼: datalist -->
+                  <div class="form-row">
+                    <label for="">廣告時段</label>
+                    <div class="datalist-wrapper">
+                      <input list="titles" placeholder="請選擇或輸入廣告時段">
+                      <datalist id="titles">
+                        <option>上午</option>
+                        <option>下午</option>
+                        <option>晚上</option>
+                        <option>不拘</option>
+                      </datalist>
+                    </div>
+                  </div>
                   <div class="form-row">
                     <label for="">受眾性別</label>
                     <input name="ta-gender" type="radio" value="male"><label for="">男</label>
                     <input name="ta-gender" type="radio" value="female"><label for="">女</label>
                     <input name="ta-gender" type="radio" value="all"><label for="">不拘</label>
+                  </div>
+                  <!-- 測試程式碼: 多選 checkbox -->
+                  <div class="form-row">
+                    <label for="">受眾族群</label>
+                    <input name="ta-work" type="checkbox" value="student"><label for="">學生</label>
+                    <input name="ta-work" type="checkbox" value="worker"><label for="">上班族</label>
+                    <input name="ta-work" type="checkbox" value="retired"><label for="">退休</label>
+                    <input name="ta-work" type="checkbox" value="all"><label for="">不拘</label>
                   </div>
                   <div class="form-row"><label for="">受眾年齡</label><input type="number" min="13" max="65" value="13"> - <input type="number" min="13" max="65" value="65"></div>
                   <div class="form-row "><label for="">受眾地點</label>
